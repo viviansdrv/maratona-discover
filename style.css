@@ -1,3 +1,68 @@
+/* GLOBAL */
+:root {
+    --dark-blue: #363f5f;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
-    color: green
+    background: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container { /* para chamar uma classe em css, utiliza-se o ponto e o nome da classe */
+    width: min(90vw, 800px);
+    margin: auto; /* organiza as laterais que tá sobrando. não organiza o top e o bottom */
+}
+
+/* titles */
+h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-blue);
+    font-weight: normal;
+}
+
+/* Header */
+header {
+    background: #2D4A22;
+    padding: 2rem 0 10rem;;
+    text-align: center;
+}
+
+#logo { /* logo é o id desse h1. também poderia colocar header h1 {  } */
+    color: #fff;
+    font-weight: 100; 
+}
+
+/* balance */
+#balance {
+    margin-top: -8rem;
+}
+#balance h2 {
+    color:white;
+}
+
+/* cards */
+.card {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    color: var(--dark-blue);
+}
+
+.card h3 {
+
+}
+
+.card p {
+    
+}
+
+/* footer */
+footer {
+    text-align: center;
 }
