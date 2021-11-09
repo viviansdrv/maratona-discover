@@ -12,6 +12,18 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.sr-only { /* tricks */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .container { /* para chamar uma classe em css, utiliza-se o ponto e o nome da classe */
     width: min(90vw, 800px);
     margin: auto; /* organiza as laterais que tá sobrando. não organiza o top e o bottom */
@@ -24,6 +36,22 @@ h2 {
     color: var(--dark-blue);
     font-weight: normal;
 }
+
+/* links & buttons */
+a {
+    color: #49AA26;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#3dd705;
+}
+
+.button.new {  /* dessa forma significa que a mesma caixa deve conter button e new. */
+    display: inline-block;
+    margin-bottom: .8rem;
+}
+
 
 /* Header */
 header {
@@ -57,6 +85,9 @@ header {
 .card h3 {
     font-weight: normal;
     font-size: 1rem;
+    display: flex;  /* um ao lado do outro */
+    align-items: center;
+    justify-content: space-between; /* colocou a setinha no outro canto */
 }
 
 .card p {
