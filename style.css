@@ -1,6 +1,9 @@
 /* GLOBAL */
 :root {
     --dark-blue: #363f5f;
+    --green: #49AA26;
+    --light-green: #3dd705;
+    --red: #e92929;
 }
 * {
     margin: 0;
@@ -44,12 +47,12 @@ h2 {
 
 /* links & buttons */
 a {
-    color: #49AA26;
+    color: var(--green);
     text-decoration: none;
 }
 
 a:hover {
-    color:#3dd705;
+    color: var(--light-green);
 }
 
 .button.new {  /* dessa forma significa que a mesma caixa deve conter button e new. */
@@ -57,6 +60,42 @@ a:hover {
     margin-bottom: .8rem;
 }
 
+.button.cancel {
+    color: var(--red);
+    border: 2px var(--red) solid;
+    border-radius: 0.25rem;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.6;
+}
+
+.button.cancel:hover {
+    opacity:1;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+
+    border: none;
+
+    color: white;
+    background: var(--green);
+    
+    padding: 0;
+
+    border-radius: 0.25rem;
+
+    cursor: pointer; /* quando passar o mouse, vira a mãozinha */
+}
+
+button:hover {
+    background: var(--light-green);
+}
 
 /* Header */
 header {
@@ -102,7 +141,7 @@ header {
 }
 
 .card.total {
-    background: #49AA26;
+    background: var(--green);
     color: white;
 }
 
@@ -179,6 +218,8 @@ td.expense {
 
     opacity: 0;
     visibility: hidden;
+
+    z-index: 999; /* foi usado p/ o footer "devFinance" não ficar aparecendo no modal */
 }
 
 .modal-overlay.active { /*modal-overlay e active são duas classes */
@@ -191,6 +232,9 @@ td.expense {
     padding: 2.4rem;
     width: 90%;
     max-width: 500px;
+
+    position: relative;
+    z-index: 1;
 }
 
 /* Form */
@@ -223,6 +267,10 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.input-group.actions .button, 
+.input-group.actions button {
+    width: 48%;
 }
 
 
