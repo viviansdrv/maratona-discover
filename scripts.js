@@ -39,9 +39,16 @@ const transactions = [
 ]
 
 const Transaction ={
+    all: transactions,
+
+    add(transaction){
+        Transaction.all.push(transaction)
+        console.log(Transaction.all)
+    },
+
     incomes(){
         let income = 0;
-        transactions.forEach(transaction =>{
+        Transaction.all.forEach(transaction =>{
             if(transaction.amount > 0){
                 income += transaction.amount;
             }
@@ -49,7 +56,7 @@ const Transaction ={
         return income;
     },
 
-    // let income = 0;
+        // let income = 0;
     // transactions.forEach(function(transaction) {
     //     if(transaction.amount > 0){
     //         income += transaction.amount;
@@ -61,7 +68,7 @@ const Transaction ={
     
     expenses(){
         let expense = 0;
-        transactions.forEach(transaction =>{
+        Transaction.all.forEach(transaction =>{
             if(transaction.amount < 0){
                 expense += transaction.amount;
             }
@@ -121,9 +128,16 @@ const Utils = {
         return signal + value
     }
 }
+
+const App = {
+    init(){
+
+     
+    },
+
+    reload(){},
+}  
+
 // DOM.addTransaction(transactions[0])
-transactions.forEach(function(transaction){
-    DOM.addTransaction(transaction)
-})
-DOM.updateBalance()
+
 
