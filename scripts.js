@@ -10,9 +10,9 @@ const Modal = {
         .classList.remove('active')
     }
 }
-
-const transactions = [
-    {
+    
+const Transaction ={
+    all: [{
         description: 'Luz',
         amount: -50000, // vale 500.00, ele colocou "desformatado"
         date: '23/01/2021'
@@ -32,10 +32,7 @@ const transactions = [
         amount: 200000, 
         date: '24/01/2021'
     },
-]
-
-const Transaction ={
-    all: transactions,
+],
 
     add(transaction){
         Transaction.all.push(transaction)
@@ -132,6 +129,36 @@ const Utils = {
         })
         return signal + value
     }
+}
+
+const Form = {
+    description: document.querySelector('#description'), //input#description
+    amount: document.querySelector('#amount'), 
+    date: document.querySelector('#date'), 
+
+    getValues(){
+        return { //retorno da função    
+            description: Form.description.value,
+            amount: Form.amount.value,
+            date: Form.date.value
+        }
+    },
+    
+    validadeFields(){
+        console.log('validar os campos')
+    },
+    submit(event) {
+        event.preventDefault()
+        //verificar se todas as informações foram preenchidas
+        Form.validadeFields()
+        //formatar dados para salvar
+        Form.formatData()
+        //salvar
+        //apagar os dados do formulário
+        //model fechar
+        //atualizar a aplicação
+    }
+
 }
 
 const App = {
