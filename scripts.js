@@ -145,18 +145,30 @@ const Form = {
     },
     
     validadeFields(){
-        console.log('validar os campos')
+        const { description, amount, date} = Form.getValues() // tirar de dentro do objeto
+
+        // trim: fazer limpeza dos espaços vazios
+        if (description.trim() === "" || amount.trim() === "" || date.trim() === "") { 
+          throw new Error("Por favor, preencha todos os campos")
+        }
     },
+
     submit(event) {
         event.preventDefault()
+
+        try{
         //verificar se todas as informações foram preenchidas
         Form.validadeFields()
         //formatar dados para salvar
-        Form.formatData()
+        //Form.formatData()
         //salvar
         //apagar os dados do formulário
         //model fechar
         //atualizar a aplicação
+        } catch (error) { // estrutura que vai capturar o erro
+            alert(error.message)
+        }
+        
     }
 
 }
