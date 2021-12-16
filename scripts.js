@@ -116,6 +116,16 @@ const DOM = {
 }
 
 const Utils = {
+    formatAmount(value){
+        value = Number(value.replace(/\,\./g, "")) * 100
+        return value
+    },
+
+    formatDate(date){
+        const splittedDate = date.split("-") 
+        return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
+    },    
+
     formatCurrency(value){
         const signal = Number(value) < 0 ? "-" : "" //tá forçando que o argumento passado seja um number
 
@@ -153,24 +163,42 @@ const Form = {
         }
     },
 
+    formatValues(){
+        let {description, amount, date } = Form.getValues()
+
+        amount = Utils.formatAmount(amount)
+
+        date = Utils.formatDate(date)
+        
+        return {
+            description, //quando o nome da chave é o mesmo nome da variável, não é necessário colocar : e o mesmo nome
+            amount,
+            date
+        } 
+
+    },
+
+    clearFields(){
+        Form.description.value = ""
+        Form.amount.value= ""
+        Form.date.value = ""
+    },
+
     submit(event) {
         event.preventDefault()
 
         try{
-        //verificar se todas as informações foram preenchidas
-        Form.validadeFields()
-        //formatar dados para salvar
-        //Form.formatData()
-        //salvar
-        //apagar os dados do formulário
-        //model fechar
-        //atualizar a aplicação
+        Form.validadeFields()//verificar se todas as informações foram preenchidas
+        const transaction = Form.formatValues() // pegar uma transação formatada
+        Transaction.add(transaction) // adicionar a transação
+        Form.clearFields() // limpar os campos
+        Modal.close()
+
+
         } catch (error) { // estrutura que vai capturar o erro
             alert(error.message)
         }
-        
     }
-
 }
 
 const App = {
@@ -190,4 +218,4 @@ const App = {
 }  
 App.init()
 
-Transaction.remove(0)
+//Transaction.remove()
